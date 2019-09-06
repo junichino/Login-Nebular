@@ -7,7 +7,7 @@ import { User } from '../_models';
   providedIn: 'root'
 })
 export class AuthService {
-  private currentUserSubject: BehaviorSubject<User>; // สร้าง subject (หัวข้อ) ให้ login user
+  private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
   private url: string;
   constructor(private http: HttpClient) {

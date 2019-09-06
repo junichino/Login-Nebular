@@ -10,7 +10,7 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(localStorage);
+    console.log(JSON.parse(localStorage.currentUser));
   }
 
 }

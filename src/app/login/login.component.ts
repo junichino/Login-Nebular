@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../_services';
 import { first } from 'rxjs/operators';
+import * as md5 from 'md5';
 
 @Component({
   selector: 'app-login',
@@ -15,14 +16,14 @@ export class LoginComponent implements OnInit {
   loginSuccess = false;
   loginError = false;
   submitted = false;
+  md5: any;
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
   ) {
     if (this.authService.currentUserValue) {
-      // console.log(localStorage);
-      // this.router.navigate(['/home']);
+      this.router.navigate(['/home']);
     }
   }
 
@@ -39,18 +40,17 @@ export class LoginComponent implements OnInit {
     this.submitted = true;
     this.loginSuccess = false;
     this.loginError = false;
-    // const passhash = this.md5.init(this.f.password.value);
-    console.log(this.loginForm);
+    const passhash = md5(this.f.password.value);
     if (this.loginForm.invalid) {
       return;
     }
     this.loginLoading = true;
-    this.authService.login(this.f.username.value, this.f.password.value)
+    setTimeout(() => {
+      this.authService.login(this.f.username.value, passhash)
       .pipe(first())
       .subscribe(
         data => {
-          console.log(`localStorage => ${localStorage.currentUser}`);
-          // this.router.navigate(['/home']);
+          this.router.navigate(['/home']);
           this.loginSuccess = true;
           this.loginLoading = false;
         },
@@ -59,5 +59,6 @@ export class LoginComponent implements OnInit {
           this.loginLoading = false;
         }
       );
+    }, 2000);
   }
 }
