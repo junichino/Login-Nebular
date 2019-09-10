@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   loginError = false;
   submitted = false;
   md5: any;
+  errormessage: string;
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -50,11 +51,16 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          this.router.navigate(['/home']);
+          // console.log(`Data :: ${data}`);
           this.loginSuccess = true;
           this.loginLoading = false;
+          setTimeout(() => {
+            this.router.navigate(['/home']);
+          }, 2000);
         },
         error => {
+          console.log(`Error :: ${ JSON.stringify(error)}`);
+          this.errormessage = `Error : ${error.status} ${error.statusText}`;
           this.loginError = true;
           this.loginLoading = false;
         }

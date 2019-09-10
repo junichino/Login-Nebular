@@ -37,7 +37,7 @@
                                     You have been successfully authenticated!
                                 </nb-alert>
                                 <nb-alert status="danger" *ngIf="submitted && loginError">
-                                    You have been unsuccessfully authenticated!
+                                    You have been unsuccessfully authenticated! {{errormessage}}
                                 </nb-alert>
                             </form>
                         </nb-card-body>
