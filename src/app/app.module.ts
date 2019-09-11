@@ -6,16 +6,29 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbLayoutModule, NbCardModule, NbInputModule, NbIconModule, NbCheckboxModule, NbAlertModule } from '@nebular/theme';
+import {
+  NbThemeModule,
+  NbLayoutModule,
+  NbCardModule,
+  NbInputModule,
+  NbIconModule,
+  NbCheckboxModule,
+  NbAlertModule,
+  NbTooltipModule,
+  NbDialogModule,
+  NbDialogService,
+  NbActionsModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
+import { LogoutComponent } from './_components/dialogs/logout/logout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -31,9 +44,17 @@ import { HomeComponent } from './home/home.component';
     NbIconModule,
     NbCheckboxModule,
     NbAlertModule,
+    NbActionsModule,
+    NbTooltipModule,
+    NbDialogModule.forRoot(),
     NbEvaIconsModule
   ],
-  providers: [],
+  providers: [
+    NbDialogService
+  ],
+  entryComponents: [
+    LogoutComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

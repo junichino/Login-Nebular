@@ -22,10 +22,10 @@ export class AuthService {
   login(username: string, password: any) {
     return this.http.post<any>(`${this.url}/login`, { username, password })
       .pipe(map(user => {
-        // console.log(user);
+        // console.log(`User :: ${JSON.stringify(user)}`);
         if (user && user.data.uid) {
-          localStorage.setItem('currentUser', JSON.stringify(user.data));
-          this.currentUserSubject.next(user);
+            localStorage.setItem('currentUser', JSON.stringify(user.data));
+            this.currentUserSubject.next(user);
         }
 
         return user;
