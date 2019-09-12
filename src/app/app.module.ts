@@ -17,18 +17,21 @@ import {
   NbTooltipModule,
   NbDialogModule,
   NbDialogService,
+  NbUserModule,
   NbActionsModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { LogoutComponent } from './_components/dialogs/logout/logout.component';
+import { HeaderComponent } from './_components/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    LogoutComponent
+    LogoutComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +50,7 @@ import { LogoutComponent } from './_components/dialogs/logout/logout.component';
     NbActionsModule,
     NbTooltipModule,
     NbDialogModule.forRoot(),
+    NbUserModule,
     NbEvaIconsModule
   ],
   providers: [

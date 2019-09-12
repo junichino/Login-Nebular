@@ -1,0 +1,6 @@
+@import "~@nebular/theme/styles/theming";
+@import "~@nebular/theme/styles/themes";
+@include nb-install-component() {
+  width: 100%;
+  padding: 0px 20px;
+}
