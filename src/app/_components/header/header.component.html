@@ -1,11 +1,20 @@
-<div class="d-flex justify-content-end">
-    <nb-action class="px-2">
-        <nb-user name="{{user.firstname}} {{user.lastname}}" title="Epic Web-Dev" class="font-weight-bold"></nb-user>
-    </nb-action>
-    <nb-action class="px-4" nbTooltip="Logout" nbTooltipPlacement="bottom" icon="power-outline" (click)="opendialog()">
-    </nb-action>
+<div class="d-flex justify-content-between">
+    <div class="d-flex">
+        <a class="navbar-brand" href="#">
+            <img src="assets/Images/mylogo.png" width="30" height="30" class="d-inline-block align-top" alt="Juni-Dev">
+        </a>
+    </div>
+    <div class="d-flex justify-content-end">
+        <nb-action class="px-2">
+            <nb-user name="{{user.firstname}} {{user.lastname}}" title="Epic Web-Dev" class="font-weight-bold">
+            </nb-user>
+        </nb-action>
+        <nb-action class="px-4" nbTooltip="Logout" nbTooltipPlacement="bottom" icon="power-outline"
+            (click)="opendialog()">
+        </nb-action>
+    </div>
 </div>
-    
+
 <!-- <nav class="navbar fixed-top text-right">
     <nb-user name="John Doe" title="Engineer" class="font-weight-bold"></nb-user>
     <nb-actions>
